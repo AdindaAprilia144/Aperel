@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Gallery</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9e6ff;
+            color: #333;
+        }
+
+        /* Header styling */
+        header {
+            background-color: #c258ffe6;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        /* Button container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            background-color: #d68fff;
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #a36deb;
+            transform: translateY(-2px);
+        }
+
+        /* Video Container Styling */
+        .video-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-container iframe {
+            width: 80%;
+            height: 80%;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-container .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .video-container .close-btn:hover {
+            color: #ff0000;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Nct Dreams album</h1>
+    </header>
+
+    <div class="container">
+        <!-- Buttons for video links -->
+        <button class="btn" onclick="openVideo('QPUjV7epJqE')">Hello Future</button>
+        <button class="btn" onclick="openVideo('PkKnp4SdE-w')">Hot Sauce</button>
+        <button class="btn" onclick="openVideo('zuoSn3ObMz4')">Candy</button>
+    </div>
+
+    <!-- Video modal -->
+    <div class="video-container" id="videoContainer">
+        <!-- Embed video with the given YouTube link -->
+        <iframe id="videoFrame" src="https://www.youtube.com/embed/QPUjV7epJqE?si=Orb5dIJufxxZab4p"
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        <span class="close-btn" onclick="closeVideo()">&times;</span>
+    </div>
+
+    <script>
+        function openVideo(videoId) {
+            // Menambahkan ID video yang dipilih ke dalam iframe
+            document.getElementById('videoFrame').src = "https://www.youtube.com/embed/" + videoId + "?si=Orb5dIJufxxZab4p";
+            document.getElementById('videoContainer').style.display = "flex";
+        }
+
+        function closeVideo() {
+            // Menghentikan video dan menyembunyikan modal
+            document.getElementById('videoFrame').src = ""; // Reset video source
+            document.getElementById('videoContainer').style.display = "none"; // Hide the container
+        }
+    </script>
+</body>
+
+</html>
